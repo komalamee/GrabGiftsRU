@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как играть - GrabGifts.ru Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .wireframe {
+            max-width: 375px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #ccc;
+        }
+
+        .section {
+            border-bottom: 1px dashed #999;
+            padding: 20px;
+            position: relative;
+        }
+
+        .section-label {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #007bff;
+            color: white;
+            padding: 2px 8px;
+            font-size: 10px;
+            border-radius: 3px;
+        }
+
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 10px 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .page-hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .page-hero .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .quick-start {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .quick-start h3 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .quick-start-btn {
+            background: #ff4757;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .game-mechanics {
+            padding: 30px 20px;
+        }
+
+        .game-mechanics h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .mechanic-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .mechanic-number {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .mechanic-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            color: #2c3e50;
+        }
+
+        .mechanic-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .mechanic-visual {
+            width: 100%;
+            height: 120px;
+            background: #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .reward-types {
+            background: #f8f9fa;
+            padding: 30px 20px;
+        }
+
+        .reward-types h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .reward-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .reward-category {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .reward-icon {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            border-radius: 8px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .reward-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .reward-examples {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .fairness-section {
+            padding: 30px 20px;
+        }
+
+        .fairness-section h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .fairness-box {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .fairness-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .fairness-feature {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .fairness-icon {
+            width: 40px;
+            height: 40px;
+            background: #2ecc71;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .screenshot-gallery {
+            background: #f8f9fa;
+            padding: 30px 20px;
+        }
+
+        .screenshot-gallery h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .screenshot {
+            width: 100%;
+            height: 120px;
+            background: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .screenshot:hover {
+            background: #ccc;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .faq-section {
+            padding: 30px 20px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .tips-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .tips-section h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tip-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            font-size: 12px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .cta-section {
+            background: #667eea;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .primary-cta {
+            background: #ff4757;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .annotation {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">GrabGifts.ru</div>
+            <div class="nav-menu">
+                <span>Главная</span>
+                <span>О нас</span>
+                <span style="color: #667eea;">Как играть</span>
+            </div>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            Главная > Как играть
+        </div>
+
+        <!-- Page Hero -->
+        <div class="page-hero section">
+            <div class="section-label">PAGE HERO</div>
+            <h1>Как играть</h1>
+            <p class="subtitle">Полное руководство по игре GrabGifts</p>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="quick-start">
+            <h3>🚀 Хотите начать прямо сейчас?</h3>
+            <p style="font-size: 12px; margin: 10px 0;">
+                Нажмите кнопку ниже и начните играть за 30 секунд!
+            </p>
+            <button class="quick-start-btn">ИГРАТЬ В TELEGRAM</button>
+        </div>
+
+        <!-- Game Mechanics -->
+        <div class="game-mechanics section">
+            <div class="section-label">MECHANICS</div>
+            <h2>Игровой процесс</h2>
+
+            <div class="mechanic-card">
+                <div class="mechanic-number">1</div>
+                <div class="mechanic-title">Получите ключи</div>
+                <div class="mechanic-desc">
+                    Каждый день вы получаете бесплатные ключи. Дополнительные ключи можно заработать за активность в игре.
+                </div>
+                <div class="mechanic-visual">[Анимация получения ключей]</div>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-number">2</div>
+                <div class="mechanic-title">Открывайте коробки</div>
+                <div class="mechanic-desc">
+                    Используйте ключи для открытия загадочных коробок. В каждой коробке вас ждет сюрприз!
+                </div>
+                <div class="mechanic-visual">[Анимация открытия коробки]</div>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-number">3</div>
+                <div class="mechanic-title">Собирайте призы</div>
+                <div class="mechanic-desc">
+                    Получайте баллы, предметы и шансы на крупные призы. Чем больше играете, тем больше выигрываете!
+                </div>
+                <div class="mechanic-visual">[Анимация выпадения призов]</div>
+            </div>
+
+            <div class="annotation">
+                🎮 Интерактивные элементы:
+                - GIF-анимации игрового процесса
+                - Видео-туториалы для каждого шага
+                - Интерактивная демо-версия
+                - Счетчики вероятности призов
+                - Калькулятор потенциального выигрыша
+            </div>
+        </div>
+
+        <!-- Reward Types -->
+        <div class="reward-types section">
+            <div class="section-label">REWARDS</div>
+            <h2>Типы наград</h2>
+
+            <div class="reward-categories">
+                <div class="reward-category">
+                    <div class="reward-icon">📱</div>
+                    <div class="reward-title">Электроника</div>
+                    <div class="reward-examples">
+                        iPhone 15 Pro<br>
+                        AirPods Pro<br>
+                        Gaming ноутбуки
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <div class="reward-icon">🎮</div>
+                    <div class="reward-title">Gaming</div>
+                    <div class="reward-examples">
+                        PlayStation 5<br>
+                        Steam карты<br>
+                        Игровые аксессуары
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <div class="reward-icon">💳</div>
+                    <div class="reward-title">Карты</div>
+                    <div class="reward-examples">
+                        Google Play<br>
+                        App Store<br>
+                        Amazon
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <div class="reward-icon">💰</div>
+                    <div class="reward-title">Криптовалюта</div>
+                    <div class="reward-examples">
+                        Bitcoin<br>
+                        Ethereum<br>
+                        USDT
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <div class="reward-icon">🏆</div>
+                    <div class="reward-title">Эксклюзивы</div>
+                    <div class="reward-examples">
+                        Limited Edition<br>
+                        Коллекционные<br>
+                        Уникальные
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <div class="reward-icon">💎</div>
+                    <div class="reward-title">Премиум</div>
+                    <div class="reward-examples">
+                        Роскошные часы<br>
+                        Ювелирные изделия<br>
+                        VIP опыт
+                    </div>
+                </div>
+            </div>
+
+            <div class="annotation">
+                💎 Визуализация ценности:
+                - Фото реальных призов
+                - Ценовые теги для каждого приза
+                - Вероятности выпадения
+                - История последних выигрышей
+                - Галерея довольных победителей
+            </div>
+        </div>
+
+        <!-- Fairness Section -->
+        <div class="fairness-section section">
+            <div class="section-label">FAIRNESS</div>
+            <h2>Честность и прозрачность</h2>
+
+            <div class="fairness-box">
+                <h3 style="margin-bottom: 15px;">🔒 100% Честная игра</h3>
+                <p style="font-size: 14px;">
+                    Все результаты генерируются с использованием блокчейн технологий, что гарантирует абсолютную честность.
+                </p>
+            </div>
+
+            <div class="fairness-features">
+                <div class="fairness-feature">
+                    <div class="fairness-icon">⛓️</div>
+                    <div style="font-size: 12px; font-weight: bold;">Блокчейн</div>
+                    <div style="font-size: 10px; color: #666;">Проверяемые результаты</div>
+                </div>
+
+                <div class="fairness-feature">
+                    <div class="fairness-icon">🔍</div>
+                    <div style="font-size: 12px; font-weight: bold;">Аудит</div>
+                    <div style="font-size: 10px; color: #666;">Внешние проверки</div>
+                </div>
+
+                <div class="fairness-feature">
+                    <div class="fairness-icon">📊</div>
+                    <div style="font-size: 12px; font-weight: bold;">Статистика</div>
+                    <div style="font-size: 10px; color: #666;">Публичные данные</div>
+                </div>
+
+                <div class="fairness-feature">
+                    <div class="fairness-icon">🛡️</div>
+                    <div style="font-size: 12px; font-weight: bold;">Защита</div>
+                    <div style="font-size: 10px; color: #666;">Безопасные транзакции</div>
+                </div>
+            </div>
+
+            <div class="annotation">
+                🔐 Доказательства честности:
+                - Ссылки на блокчейн транзакции
+                - Отчеты независимых аудиторов
+                - Алгоритмы генерации случайности
+                - Публичная статистика выплат
+                - Сертификаты безопасности
+            </div>
+        </div>
+
+        <!-- Screenshot Gallery -->
+        <div class="screenshot-gallery section">
+            <div class="section-label">GALLERY</div>
+            <h2>Скриншоты игры</h2>
+
+            <div class="screenshot-grid">
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Главный экран]
+                </div>
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Открытие коробки]
+                </div>
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Инвентарь призов]
+                </div>
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Экран победы]
+                </div>
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Магазин ключей]
+                </div>
+                <div class="screenshot">
+                    <div class="play-button">▶</div>
+                    [Рейтинг игроков]
+                </div>
+            </div>
+
+            <div class="annotation">
+                📸 Визуальная демонстрация:
+                - Высококачественные скриншоты
+                - Короткие видео геймплея
+                - Интерактивная карусель
+                - Описания к каждому экрану
+                - Возможность увеличения
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h3>💡 Советы для успешной игры</h3>
+
+            <div class="tip-item">
+                <strong>Ежедневный вход:</strong> Заходите каждый день, чтобы получать бонусные ключи
+            </div>
+
+            <div class="tip-item">
+                <strong>Приглашайте друзей:</strong> За каждого друга получайте дополнительные ключи
+            </div>
+
+            <div class="tip-item">
+                <strong>Участвуйте в событиях:</strong> Специальные события дают больше шансов на призы
+            </div>
+
+            <div class="tip-item">
+                <strong>Сохраняйте ключи:</strong> Копите ключи для особых коробок с лучшими призами
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section section">
+            <div class="section-label">FAQ</div>
+            <h2>Часто задаваемые вопросы</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Сколько стоит игра?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Игра абсолютно бесплатная! Каждый день вы получаете бесплатные ключи. Дополнительные ключи можно купить или заработать.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Как получить свой приз?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Призы отправляются автоматически после выигрыша. Физические товары доставляются курьером, цифровые - моментально.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Есть ли ограничения по возрасту?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Игра предназначена для пользователей от 18 лет. Это связано с правилами проведения розыгрышей призов.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Можно ли играть из других стран?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    В настоящее время игра доступна для пользователей из России, Беларуси, Казахстана и других стран СНГ.
+                </div>
+            </div>
+
+            <div class="annotation">
+                ❓ Снижение барьеров:
+                - Поиск по вопросам
+                - Видео-ответы на популярные вопросы
+                - Ссылки на техподдержку
+                - Категоризация вопросов
+                - Рейтинг полезности ответов
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section section">
+            <div class="section-label">FINAL CTA</div>
+            <h2>Готовы начать выигрывать?</h2>
+            <p>Все еще есть вопросы? Начните играть и разберетесь на ходу!</p>
+
+            <button class="primary-cta">🎮 НАЧАТЬ ИГРУ В TELEGRAM</button>
+
+            <p style="font-size: 12px; margin-top: 15px;">
+                ⚡ Первая игра бесплатно + бонусные ключи!
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <span>Главная</span>
+                <span>О нас</span>
+                <span>Правила</span>
+                <span>Поддержка</span>
+            </div>
+            <p>© 2024 Mighty Bear Games Pte Ltd. Все права защищены.</p>
+            <p style="margin-top: 5px;">Техподдержка: support@mightybear.com</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>GrabGifts.ru - Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Mobile-First Base Styles */
+        .mobile-container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Sticky Header - Mobile Optimized */
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-mobile {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-burger {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .menu-burger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section - Mobile First */
+        .hero-mobile {
+            padding: 80px 16px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        /* Game Preview - Mobile Optimized */
+        .game-preview-mobile {
+            width: calc(100% + 32px);
+            margin: 0 -16px 24px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* CTA Button - Touch Optimized */
+        .cta-mobile {
+            width: 100%;
+            padding: 18px 24px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+            min-height: 56px; /* Touch target minimum */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .cta-mobile:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .cta-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4); }
+            50% { box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4); }
+        }
+
+        /* Stats Badge - Mobile */
+        .stats-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-top: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Trust Signals - Mobile Grid */
+        .trust-section-mobile {
+            padding: 40px 16px;
+            background: white;
+        }
+
+        .section-title-mobile {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #2c3e50;
+            letter-spacing: -0.5px;
+        }
+
+        .trust-grid-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .trust-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .trust-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .trust-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Prize Carousel - Mobile Swipeable */
+        .prizes-section-mobile {
+            padding: 40px 0;
+            background: #f8f9fa;
+        }
+
+        .prizes-header {
+            padding: 0 16px;
+            margin-bottom: 24px;
+        }
+
+        .prizes-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 16px 20px;
+            gap: 12px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .prizes-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .prize-card {
+            flex: 0 0 140px;
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            scroll-snap-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .prize-card:active {
+            transform: scale(0.95);
+        }
+
+        .prize-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .prize-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .prize-value {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* How It Works - Mobile Steps */
+        .how-section-mobile {
+            padding: 40px 16px;
+            background: white;
+        }
+
+        .steps-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:active {
+            background: #e9ecef;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #2c3e50;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Recent Winners - Mobile Feed */
+        .winners-section-mobile {
+            padding: 40px 16px;
+            background: white;
+        }
+
+        .winner-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .winner-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .winner-info {
+            flex: 1;
+        }
+
+        .winner-name {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .winner-prize {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .winner-time {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Live Indicator */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ff4757;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Footer CTA - Mobile */
+        .footer-cta-mobile {
+            padding: 40px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .bonus-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Bottom Navigation - Mobile */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 999;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nav-item {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item.active {
+            color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        /* Footer - Mobile Minimal */
+        .footer-mobile {
+            padding: 24px 16px 80px;
+            background: #1a1a1a;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .footer-links-mobile {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links-mobile a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 72px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+            background: #ff4757;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+            z-index: 900;
+            font-size: 24px;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .fab:active {
+            transform: scale(0.9);
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Safe Area Support */
+        @supports (padding: env(safe-area-inset-bottom)) {
+            .mobile-header {
+                padding-top: env(safe-area-inset-top);
+                height: calc(56px + env(safe-area-inset-top));
+            }
+
+            .bottom-nav {
+                padding-bottom: env(safe-area-inset-bottom);
+                height: calc(56px + env(safe-area-inset-bottom));
+            }
+
+            .footer-mobile {
+                padding-bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Touch Feedback */
+        .touchable {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        /* Pull to Refresh Indicator */
+        .pull-to-refresh {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Pull to Refresh -->
+        <div class="pull-to-refresh">🔄</div>
+
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="logo-mobile">GrabGifts.ru</div>
+            <button class="menu-burger touchable">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-mobile">
+            <h1 class="hero-title">Выигрывайте реальные призы в Telegram!</h1>
+            <p class="hero-subtitle">Официальная игра от Mighty Bear Games</p>
+
+            <div class="game-preview-mobile">
+                <div style="color: white; font-size: 18px; font-weight: 700;">
+                    🎮 ИГРА ЗАГРУЖАЕТСЯ...
+                    <div style="font-size: 12px; margin-top: 8px; opacity: 0.8;">
+                        Требуется: Скриншот игры
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-mobile cta-pulse touchable" onclick="handleCTA()">
+                <span>🚀</span>
+                <span>ИГРАТЬ В TELEGRAM</span>
+            </button>
+
+            <div class="stats-badge">
+                <strong>6,234,567</strong> игроков онлайн
+            </div>
+
+            <div class="scroll-indicator">⬇️</div>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="trust-section-mobile">
+            <h2 class="section-title-mobile">Почему нам доверяют?</h2>
+
+            <div class="trust-grid-mobile">
+                <div class="trust-card touchable">
+                    <div class="trust-value">6M+</div>
+                    <div class="trust-label">Игроков</div>
+                </div>
+                <div class="trust-card touchable">
+                    <div class="trust-value">100%</div>
+                    <div class="trust-label">Честно</div>
+                </div>
+                <div class="trust-card touchable">
+                    <div class="trust-value">24/7</div>
+                    <div class="trust-label">Поддержка</div>
+                </div>
+                <div class="trust-card touchable">
+                    <div class="trust-value">🇸🇬</div>
+                    <div class="trust-label">Лицензия</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Carousel -->
+        <section class="prizes-section-mobile">
+            <div class="prizes-header">
+                <h2 class="section-title-mobile">Что можно выиграть?</h2>
+                <p style="font-size: 14px; color: #666; margin-top: 8px;">
+                    Свайпните влево для просмотра →
+                </p>
+            </div>
+
+            <div class="prizes-carousel">
+                <div class="prize-card touchable">
+                    <div class="prize-icon">📱</div>
+                    <div class="prize-name">iPhone 15</div>
+                    <div class="prize-value">₽120,000</div>
+                </div>
+                <div class="prize-card touchable">
+                    <div class="prize-icon">🎮</div>
+                    <div class="prize-name">PlayStation 5</div>
+                    <div class="prize-value">₽60,000</div>
+                </div>
+                <div class="prize-card touchable">
+                    <div class="prize-icon">🎧</div>
+                    <div class="prize-name">AirPods Pro</div>
+                    <div class="prize-value">₽25,000</div>
+                </div>
+                <div class="prize-card touchable">
+                    <div class="prize-icon">💳</div>
+                    <div class="prize-name">Steam карты</div>
+                    <div class="prize-value">₽5,000</div>
+                </div>
+                <div class="prize-card touchable">
+                    <div class="prize-icon">💰</div>
+                    <div class="prize-name">TON криптовалюта</div>
+                    <div class="prize-value">$100</div>
+                </div>
+                <div class="prize-card touchable">
+                    <div class="prize-icon">🎁</div>
+                    <div class="prize-name">Подарочные карты</div>
+                    <div class="prize-value">₽10,000</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-section-mobile">
+            <h2 class="section-title-mobile">Как это работает?</h2>
+
+            <div class="steps-mobile">
+                <div class="step-card touchable">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Откройте Telegram</div>
+                        <div class="step-desc">Нажмите на кнопку и перейдите в бота</div>
+                    </div>
+                </div>
+
+                <div class="step-card touchable">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Играйте и собирайте</div>
+                        <div class="step-desc">Открывайте коробки и копите баллы</div>
+                    </div>
+                </div>
+
+                <div class="step-card touchable">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Выигрывайте призы!</div>
+                        <div class="step-desc">Обменивайте баллы на реальные подарки</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Winners -->
+        <section class="winners-section-mobile">
+            <h2 class="section-title-mobile">Последние победители</h2>
+
+            <div class="winner-card">
+                <div class="winner-avatar">АК</div>
+                <div class="winner-info">
+                    <div class="winner-name">Александр К.</div>
+                    <div class="winner-prize">выиграл iPhone 15 Pro</div>
+                </div>
+                <div class="winner-time">2 мин</div>
+            </div>
+
+            <div class="winner-card">
+                <div class="winner-avatar">МЛ</div>
+                <div class="winner-info">
+                    <div class="winner-name">Мария Л.</div>
+                    <div class="winner-prize">получила Steam карту ₽5000</div>
+                </div>
+                <div class="winner-time">15 мин</div>
+            </div>
+
+            <div class="winner-card">
+                <div class="winner-avatar">ДП</div>
+                <div class="winner-info">
+                    <div class="winner-name">Дмитрий П.</div>
+                    <div class="winner-prize">выиграл AirPods Pro</div>
+                </div>
+                <div class="winner-time">1 час</div>
+            </div>
+
+            <div style="text-align: center;">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span>ОБНОВЛЯЕТСЯ В РЕАЛЬНОМ ВРЕМЕНИ</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="footer-cta-mobile">
+            <h2 style="font-size: 24px; margin-bottom: 16px;">Готовы выиграть?</h2>
+            <p style="margin-bottom: 20px;">Присоединяйтесь к миллионам игроков!</p>
+
+            <button class="cta-mobile touchable" style="background: white; color: #667eea;">
+                🎮 НАЧАТЬ ИГРАТЬ
+            </button>
+
+            <div class="bonus-badge">
+                ⭐ Бонус +100 баллов новым игрокам
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-mobile">
+            <div class="footer-links-mobile">
+                <a href="#terms" class="touchable">Правила</a>
+                <a href="#privacy" class="touchable">Конфиденциальность</a>
+                <a href="#support" class="touchable">Поддержка</a>
+                <a href="#contact" class="touchable">Контакты</a>
+            </div>
+            <p>© 2024 Mighty Bear Games Pte Ltd</p>
+            <p style="margin-top: 8px; opacity: 0.7;">
+                Лицензия Сингапура • 18+ • Играйте ответственно
+            </p>
+        </footer>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active touchable">
+                <span class="nav-icon">🏠</span>
+                <span>Главная</span>
+            </button>
+            <button class="nav-item touchable">
+                <span class="nav-icon">🎁</span>
+                <span>Призы</span>
+            </button>
+            <button class="nav-item touchable">
+                <span class="nav-icon">🎮</span>
+                <span>Играть</span>
+            </button>
+            <button class="nav-item touchable">
+                <span class="nav-icon">👤</span>
+                <span>Профиль</span>
+            </button>
+        </nav>
+
+        <!-- Floating Action Button -->
+        <button class="fab touchable" onclick="handleCTA()">
+            🚀
+        </button>
+    </div>
+
+    <script>
+        // Handle CTA clicks
+        function handleCTA() {
+            // Haptic feedback simulation
+            if ('vibrate' in navigator) {
+                navigator.vibrate(10);
+            }
+
+            // Show loading state
+            event.target.innerHTML = '<span>⏳</span> <span>Загрузка...</span>';
+
+            setTimeout(() => {
+                if (confirm('Открыть Telegram для игры?')) {
+                    window.location.href = 'https://t.me/Grab_Giftsbot/grabgifts?startapp=src_GGRU';
+                } else {
+                    event.target.innerHTML = '<span>🚀</span> <span>ИГРАТЬ В TELEGRAM</span>';
+                }
+            }, 500);
+        }
+
+        // Smooth scroll behavior
+        document.querySelectorAll('.touchable').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                this.style.opacity = '0.7';
+            });
+            el.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+
+        // Pull to refresh simulation
+        let startY = 0;
+        let pulling = false;
+
+        document.addEventListener('touchstart', function(e) {
+            if (window.scrollY === 0) {
+                startY = e.touches[0].clientY;
+                pulling = true;
+            }
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (pulling && e.touches[0].clientY - startY > 100) {
+                document.querySelector('.pull-to-refresh').style.top = '60px';
+            }
+        });
+
+        document.addEventListener('touchend', function() {
+            if (pulling) {
+                document.querySelector('.pull-to-refresh').style.top = '-60px';
+                pulling = false;
+            }
+        });
+
+        // Live counter animation
+        setInterval(() => {
+            const stats = document.querySelector('.stats-badge strong');
+            if (stats) {
+                const current = parseInt(stats.textContent.replace(/[^\d]/g, ''));
+                const newValue = current + Math.floor(Math.random() * 5) + 1;
+                stats.textContent = newValue.toLocaleString('ru-RU');
+            }
+        }, 3000);
+
+        // Carousel scroll hint
+        const carousel = document.querySelector('.prizes-carousel');
+        setTimeout(() => {
+            if (carousel) {
+                carousel.scrollLeft = 20;
+                setTimeout(() => {
+                    carousel.scrollLeft = 0;
+                }, 300);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

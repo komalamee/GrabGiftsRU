@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Option 3 - Premium Gradient</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'sparkle': 'sparkle 1.5s ease-in-out infinite',
+                        'premium-glow': 'premiumGlow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        sparkle: {
+                            '0%, 100%': { opacity: '0', transform: 'scale(0)' },
+                            '50%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        premiumGlow: {
+                            '0%': { 'box-shadow': '0 0 20px rgba(168, 85, 247, 0.4)' },
+                            '100%': { 'box-shadow': '0 0 40px rgba(168, 85, 247, 0.8)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .premium-gradient {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient-x 15s ease infinite;
+        }
+
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-premium-gradient {
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sparkle-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sparkle-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .floating-sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: gold;
+            font-size: 1.5rem;
+            animation: sparkle 2s infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 40%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 50%; right: 25%; animation-delay: 1.5s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Option 3: Premium Gradient Theme -->
+    <section class="relative min-h-screen flex items-center premium-gradient overflow-hidden">
+        <!-- Floating Sparkles -->
+        <div class="floating-sparkles">
+            <div class="sparkle">✨</div>
+            <div class="sparkle">💎</div>
+            <div class="sparkle">⭐</div>
+            <div class="sparkle">🌟</div>
+        </div>
+
+        <!-- Premium Background Orbs -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-20 w-40 h-40 bg-white rounded-full blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-40 right-20 w-32 h-32 bg-yellow-300 rounded-full blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-60 right-40 w-36 h-36 bg-pink-300 rounded-full blur-3xl opacity-25 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Content -->
+                <div class="text-center lg:text-left space-y-8">
+                    <!-- Premium Badge -->
+                    <div class="inline-flex items-center px-6 py-3 glass-premium rounded-full text-white text-sm font-medium sparkle-effect">
+                        <div class="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mr-3 animate-pulse"></div>
+                        👑 ПРЕМИУМ ИГРА ОТ MIGHTY BEAR GAMES
+                    </div>
+
+                    <!-- Premium Title -->
+                    <div class="space-y-4">
+                        <h1 class="text-6xl lg:text-8xl font-black leading-none tracking-tight">
+                            <span class="text-white drop-shadow-2xl">Выигрывайте</span>
+                            <span class="block text-premium-gradient drop-shadow-2xl">
+                                TON и Gifts
+                            </span>
+                            <span class="text-white drop-shadow-2xl">в Telegram!</span>
+                        </h1>
+
+                        <p class="text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed drop-shadow-lg">
+                            Присоединяйтесь к элитному клубу игроков и выигрывайте эксклюзивные призы
+                        </p>
+                    </div>
+
+                    <!-- Premium CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="sparkle-effect bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 hover:from-yellow-300 hover:via-orange-400 hover:to-pink-400 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl animate-premium-glow">
+                            💎 ИГРАТЬ ПРЕМИУМ
+                        </button>
+
+                        <button class="glass-premium text-white font-semibold py-4 px-8 rounded-2xl text-lg transition-all duration-300 hover:bg-white/20">
+                            🏆 ЭКСКЛЮЗИВНОЕ МЕНЮ
+                        </button>
+                    </div>
+
+                    <!-- Premium Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8">
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">6M+</div>
+                            <div class="text-white/80 text-sm font-medium">VIP Игроков</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-premium-gradient drop-shadow-lg">₽50M+</div>
+                            <div class="text-white/80 text-sm font-medium">Премиум призов</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">24/7</div>
+                            <div class="text-white/80 text-sm font-medium">VIP Поддержка</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Premium Phone -->
+                <div class="relative flex justify-center">
+                    <div class="relative">
+                        <!-- Premium Phone Frame with Gold Accent -->
+                        <div class="relative bg-gradient-to-br from-yellow-400 to-orange-500 rounded-[3rem] p-1 shadow-2xl animate-premium-glow">
+                            <div class="bg-gray-900 rounded-[2.8rem] p-2">
+                                <div class="bg-black rounded-[2.5rem] overflow-hidden">
+                                    <!-- Premium Notch -->
+                                    <div class="h-6 bg-black relative">
+                                        <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                                    </div>
+
+                                    <!-- Premium Game Interface -->
+                                    <div class="h-96 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+                                        <!-- Luxury UI Elements -->
+                                        <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+                                            <div class="glass-premium rounded-lg px-3 py-1 text-white text-sm font-semibold">
+                                                💰 1,250 баллов
+                                            </div>
+                                            <div class="glass-premium rounded-lg px-3 py-1 text-white text-sm font-semibold">
+                                                👑 VIP 12
+                                            </div>
+                                        </div>
+
+                                        <!-- Luxury Gift Box -->
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="animate-bounce-subtle">
+                                                <div class="w-24 h-24 bg-gradient-to-br from-yellow-300 via-orange-400 to-pink-500 rounded-2xl shadow-2xl flex items-center justify-center text-4xl animate-premium-glow sparkle-effect">
+                                                    🎁
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Premium Bottom UI -->
+                                        <div class="absolute bottom-4 left-4 right-4">
+                                            <button class="w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white font-bold py-3 rounded-xl text-lg shadow-lg sparkle-effect">
+                                                Открыть премиум подарок
+                                            </button>
+                                        </div>
+
+                                        <!-- Luxury Floating Elements -->
+                                        <div class="absolute inset-0 pointer-events-none">
+                                            <div class="absolute top-1/4 left-1/4 animate-float text-2xl">💎</div>
+                                            <div class="absolute top-1/3 right-1/4 animate-float text-xl" style="animation-delay: 1s;">👑</div>
+                                            <div class="absolute bottom-1/4 left-1/3 animate-float text-lg" style="animation-delay: 2s;">⭐</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium Glow Effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-[3rem] blur-2xl opacity-40 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+            <div class="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center shadow-lg">
+                <div class="w-1 h-3 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-gradient-to-r from-purple-600 to-pink-600 py-8 text-center">
+        <h2 class="text-2xl font-bold text-white mb-2">Option 3: Premium Gradient Luxury</h2>
+        <p class="text-white/90">Luxurious animated gradient design with gold accents and sparkle effects</p>
+    </div>
+</body>
+</html>

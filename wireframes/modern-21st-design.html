@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrabGifts.ru - Выигрывайте реальные призы в Telegram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': {
+                            50: '#f0f9ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        },
+                        'accent': {
+                            500: '#f97316',
+                            600: '#ea580c'
+                        },
+                        'success': '#10b981',
+                        'warning': '#f59e0b',
+                        'error': '#ef4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                        'display': ['Cal Sans', 'Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { 'box-shadow': '0 0 20px rgba(59, 130, 246, 0.5)' },
+                            '100%': { 'box-shadow': '0 0 30px rgba(59, 130, 246, 0.8)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    },
+                    backdropBlur: {
+                        'xs': '2px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mesh-gradient {
+            background: radial-gradient(circle at 20% 80%, #667eea 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #764ba2 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #f093fb 0%, transparent 50%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .prize-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .prize-card:hover {
+            transform: translateY(-12px) rotateY(5deg);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+            border-color: #3b82f6;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(odd) {
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(even) {
+            animation-delay: -4s;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-pattern {
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        /* Loading shimmer effect */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">G</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">GrabGifts.ru</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-white/90 hover:text-white transition-colors">Возможности</a>
+                    <a href="#prizes" class="text-white/90 hover:text-white transition-colors">Призы</a>
+                    <a href="#how-it-works" class="text-white/90 hover:text-white transition-colors">Как играть</a>
+                    <a href="#support" class="text-white/90 hover:text-white transition-colors">Поддержка</a>
+                </div>
+
+                <button class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center gradient-bg hero-pattern overflow-hidden">
+        <div class="floating-elements">
+            <div class="floating-element text-white text-4xl" style="top: 20%; left: 10%;">🎮</div>
+            <div class="floating-element text-white text-3xl" style="top: 30%; right: 15%;">💎</div>
+            <div class="floating-element text-white text-2xl" style="bottom: 40%; left: 20%;">🎁</div>
+            <div class="floating-element text-white text-3xl" style="bottom: 20%; right: 25%;">🏆</div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Content -->
+                <div class="text-center lg:text-left space-y-8">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white/90 text-sm font-medium">
+                            🚀 Официальная игра от Mighty Bear Games
+                        </div>
+
+                        <h1 class="hero-title text-5xl lg:text-7xl font-black leading-tight tracking-tight">
+                            <span class="text-slate-900 drop-shadow-lg">Выигрывайте</span>
+                            <span class="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                                TON и Gifts
+                            </span>
+                            <span class="text-slate-900 drop-shadow-lg">в Telegram!</span>
+                        </h1>
+
+                        <p class="text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed">
+                            Играйте, собирайте баллы и выигрывайте TON криптовалюту и эксклюзивные Telegram Gifts NFT
+                        </p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="btn-glow bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl animate-glow">
+                            🎮 Играть в Telegram
+                        </button>
+
+                        <button class="glass-morphism text-white font-semibold py-4 px-8 rounded-2xl text-lg transition-all duration-300 hover:bg-white/20 border border-white/20">
+                            📖 Узнать больше
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8">
+                        <div class="text-center">
+                            <div class="text-2xl lg:text-3xl font-bold text-white">6M+</div>
+                            <div class="text-white/80 text-sm">Игроков</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl lg:text-3xl font-bold text-white">₽50M+</div>
+                            <div class="text-white/80 text-sm">Выплачено</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl lg:text-3xl font-bold text-white">24/7</div>
+                            <div class="text-white/80 text-sm">Поддержка</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Game Preview -->
+                <div class="relative">
+                    <div class="relative mx-auto max-w-sm lg:max-w-md">
+                        <!-- Phone Frame -->
+                        <div class="relative bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
+                            <div class="bg-black rounded-[2.5rem] overflow-hidden">
+                                <!-- Notch -->
+                                <div class="h-6 bg-black relative">
+                                    <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-800 rounded-full"></div>
+                                </div>
+
+                                <!-- Game Interface -->
+                                <div class="h-96 bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 relative overflow-hidden">
+                                    <!-- Game UI Elements -->
+                                    <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+                                        <div class="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-semibold">
+                                            💰 1,250 баллов
+                                        </div>
+                                        <div class="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-semibold">
+                                            ⭐ Уровень 12
+                                        </div>
+                                    </div>
+
+                                    <!-- Gift Box Animation -->
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="animate-bounce-subtle">
+                                            <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-2xl flex items-center justify-center text-4xl animate-glow">
+                                                🎁
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom UI -->
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <button class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 rounded-xl text-lg shadow-lg">
+                                            Открыть подарок
+                                        </button>
+                                    </div>
+
+                                    <!-- Floating Particles -->
+                                    <div class="absolute inset-0 pointer-events-none">
+                                        <div class="absolute top-1/4 left-1/4 animate-float text-2xl">✨</div>
+                                        <div class="absolute top-1/3 right-1/4 animate-float animation-delay-1000 text-xl">💎</div>
+                                        <div class="absolute bottom-1/4 left-1/3 animate-float animation-delay-2000 text-lg">🌟</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Glow Effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-[3rem] blur-2xl opacity-30 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+            <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                    Почему выбирают <span class="text-gradient">GrabGifts</span>?
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Честная игра, реальные призы, мгновенные выплаты и поддержка мирового уровня
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-3xl border border-blue-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl text-white mb-6">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">100% Честно</h3>
+                    <p class="text-slate-600">Прозрачная система розыгрышей с публичной отчетностью</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-3xl border border-green-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-2xl text-white mb-6">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Быстрые выплаты</h3>
+                    <p class="text-slate-600">Получайте призы в течение 24 часов после выигрыша</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-violet-100 p-8 rounded-3xl border border-purple-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center text-2xl text-white mb-6">
+                        🎁
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Крутые призы</h3>
+                    <p class="text-slate-600">iPhone, PlayStation, криптовалюта и эксклюзивные подарки</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-red-100 p-8 rounded-3xl border border-orange-200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-2xl text-white mb-6">
+                        🌟
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">24/7 Поддержка</h3>
+                    <p class="text-slate-600">Круглосуточная помощь на русском языке</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                    Что можно <span class="text-gradient">выиграть</span>?
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                    Реальные призы от ₽1,000 до ₽200,000 — новые розыгрыши каждый день!
+                </p>
+
+                <!-- Live Counter -->
+                <div class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full font-semibold text-lg shadow-lg">
+                    <div class="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></div>
+                    Сегодня разыграно: ₽<span id="live-counter" class="font-bold">247,850</span>
+                </div>
+            </div>
+
+            <!-- Current Prizes - Telegram Ecosystem -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">🎁 Текущие призы</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- TON Cryptocurrency -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-3xl">
+                            💎
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">TON криптовалюта</h3>
+                        <p class="text-lg text-slate-600 mb-4">10 - 1000 TON</p>
+                        <div class="text-sm text-slate-500 mb-4">Ежедневные розыгрыши</div>
+                        <div class="text-xs text-green-600 font-semibold">🎯 Шанс: 1 к 100</div>
+                    </div>
+
+                    <!-- Telegram Premium Gift -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-3xl">
+                            ⭐
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Telegram Premium Gift</h3>
+                        <p class="text-lg text-slate-600 mb-4">1-12 месяцев</p>
+                        <div class="text-sm text-slate-500 mb-4">Каждые 6 часов</div>
+                        <div class="text-xs text-green-600 font-semibold">🎯 Шанс: 1 к 50</div>
+                    </div>
+
+                    <!-- Telegram Stars -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center text-3xl">
+                            ⭐
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Telegram Stars</h3>
+                        <p class="text-lg text-slate-600 mb-4">100 - 10,000 звезд</p>
+                        <div class="text-sm text-slate-500 mb-4">Каждый час</div>
+                        <div class="text-xs text-green-600 font-semibold">🎯 Шанс: 1 к 25</div>
+                    </div>
+
+                    <!-- Legendary Gifts -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100 p-2">
+                            <img src="assets/gifts/snoop-dogg.png" alt="Snoop Dogg Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Legendary Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Snoop Dogg, Swiss Watch</p>
+                        <div class="text-sm text-slate-500 mb-4">Супер редкие</div>
+                        <div class="text-xs text-purple-600 font-semibold">🎯 Шанс: 1 к 10,000</div>
+                    </div>
+
+                    <!-- Epic Gifts -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 p-2">
+                            <img src="assets/gifts/astral-shard.png" alt="Astral Shard Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Epic Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Astral Shard, Gem Signet</p>
+                        <div class="text-sm text-slate-500 mb-4">Каждые 4 часа</div>
+                        <div class="text-xs text-orange-600 font-semibold">🎯 Шанс: 1 к 1,000</div>
+                    </div>
+
+                    <!-- Rare Gifts -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-pink-100 to-rose-100 p-2">
+                            <img src="assets/gifts/heart-locket.png" alt="Heart Locket Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Rare Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Heart Locket, Peach</p>
+                        <div class="text-sm text-slate-500 mb-4">Еженедельно</div>
+                        <div class="text-xs text-pink-600 font-semibold">🎯 Шанс: 1 к 500</div>
+                    </div>
+
+                    <!-- Additional Gift Types Row -->
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-pink-100 to-red-100 p-2">
+                            <img src="assets/gifts/gem-signet.png" alt="Gem Signet Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Precious Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Gem Signet, Swiss Watch</p>
+                        <div class="text-sm text-slate-500 mb-4">Раз в день</div>
+                        <div class="text-xs text-indigo-600 font-semibold">🎯 Шанс: 1 к 2,500</div>
+                    </div>
+
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-slate-100 p-2">
+                            <img src="assets/gifts/swiss-watch.png" alt="Swiss Watch Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Luxury Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Swiss Watch, Premium Items</p>
+                        <div class="text-sm text-slate-500 mb-4">Раз в неделю</div>
+                        <div class="text-xs text-slate-600 font-semibold">🎯 Шанс: 1 к 5,000</div>
+                    </div>
+
+                    <div class="prize-card rounded-3xl p-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100 p-2">
+                            <img src="assets/gifts/heart-locket.png" alt="Heart Locket Gift" class="w-full h-full object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Romantic Gifts</h3>
+                        <p class="text-lg text-slate-600 mb-4">Heart Locket, Special NFTs</p>
+                        <div class="text-sm text-slate-500 mb-4">Специальные события</div>
+                        <div class="text-xs text-rose-600 font-semibold">🎯 Шанс: 1 к 1,500</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Section -->
+            <div class="mt-16 p-8 bg-gradient-to-br from-slate-100 to-blue-50 rounded-3xl border-2 border-dashed border-slate-300">
+                <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">🚀 Скоро: Реальные призы!</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center opacity-60">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-slate-200 rounded-xl flex items-center justify-center text-2xl">
+                            📱
+                        </div>
+                        <p class="font-semibold">iPhone 15 Pro</p>
+                        <p class="text-sm text-slate-500">Скоро</p>
+                    </div>
+                    <div class="text-center opacity-60">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-slate-200 rounded-xl flex items-center justify-center text-2xl">
+                            🎮
+                        </div>
+                        <p class="font-semibold">PlayStation 5</p>
+                        <p class="text-sm text-slate-500">Скоро</p>
+                    </div>
+                    <div class="text-center opacity-60">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-slate-200 rounded-xl flex items-center justify-center text-2xl">
+                            🎧
+                        </div>
+                        <p class="font-semibold">AirPods Pro</p>
+                        <p class="text-sm text-slate-500">Скоро</p>
+                    </div>
+                    <div class="text-center opacity-60">
+                        <div class="w-16 h-16 mx-auto mb-3 bg-slate-200 rounded-xl flex items-center justify-center text-2xl">
+                            💻
+                        </div>
+                        <p class="font-semibold">MacBook</p>
+                        <p class="text-sm text-slate-500">Скоро</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Prizes Button -->
+            <div class="text-center">
+                <button class="btn-glow bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                    🏆 Посмотреть все призы
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                    Как <span class="text-gradient">это работает</span>?
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Всего 3 простых шага до выигрыша — начните играть прямо сейчас!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-2xl">
+                            1
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-lg animate-bounce">
+                            📱
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Откройте Telegram</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Нажмите на кнопку "Играть в Telegram" и перейдите в официального бота GrabGifts
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 mx-auto bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-2xl">
+                            2
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-lg animate-bounce animation-delay-500">
+                            🎮
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Играйте и собирайте</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Открывайте подарочные коробки, выполняйте задания и копите баллы для участия в розыгрышах
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-2xl">
+                            3
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-lg animate-bounce animation-delay-1000">
+                            🏆
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Выигрывайте призы!</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Обменивайте баллы на участие в розыгрышах и получайте реальные призы прямо домой
+                    </p>
+                </div>
+            </div>
+
+            <!-- Start Playing CTA -->
+            <div class="text-center mt-16">
+                <button class="btn-glow bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-6 px-12 rounded-2xl text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl animate-glow">
+                    🚀 Начать играть бесплатно
+                </button>
+                <p class="text-slate-500 mt-4">Бонус +100 баллов для новых игроков!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Winners -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                    Последние <span class="text-gradient">победители</span>
+                </h2>
+                <p class="text-xl text-slate-600">Настоящие люди, реальные выигрыши!</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Winner 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            А
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-slate-900">Александр К.</div>
+                            <div class="text-sm text-slate-500">Москва</div>
+                        </div>
+                        <div class="ml-auto text-xs text-slate-400">2 мин назад</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200">
+                        <div class="text-lg font-semibold text-slate-900">💎 Выиграл 500 TON!</div>
+                        <div class="text-green-600 font-bold">~$2,500</div>
+                    </div>
+                </div>
+
+                <!-- Winner 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            М
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-slate-900">Мария Л.</div>
+                            <div class="text-sm text-slate-500">СПб</div>
+                        </div>
+                        <div class="ml-auto text-xs text-slate-400">15 мин назад</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-200">
+                        <div class="text-lg font-semibold text-slate-900">⭐ Выиграла Premium Gift!</div>
+                        <div class="text-blue-600 font-bold">12 месяцев</div>
+                    </div>
+                </div>
+
+                <!-- Winner 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            Д
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold text-slate-900">Дмитрий П.</div>
+                            <div class="text-sm text-slate-500">Екатеринбург</div>
+                        </div>
+                        <div class="ml-auto text-xs text-slate-400">1 час назад</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-xl border border-yellow-200">
+                        <div class="text-lg font-semibold text-slate-900">🎁 Выиграл Red Gift NFT!</div>
+                        <div class="text-orange-600 font-bold">Редкий</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Updates -->
+            <div class="text-center mt-12">
+                <div class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full font-semibold shadow-lg">
+                    <div class="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></div>
+                    Обновляется в реальном времени
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">G</span>
+                        </div>
+                        <span class="text-2xl font-bold">GrabGifts.ru</span>
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-md">
+                        Официальная российская платформа для игры в GrabGifts от Mighty Bear Games.
+                        Играйте честно, выигрывайте реально!
+                    </p>
+                    <div class="text-sm text-slate-500">
+                        © 2024 Mighty Bear Games Pte Ltd.<br>
+                        Зарегистрировано в Сингапуре • Лицензия на игорную деятельность
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Быстрые ссылки</h3>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Как играть</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Правила</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Призы</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Победители</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Поддержка</h3>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Центр помощи</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Связаться с нами</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Конфиденциальность</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Условия использования</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-slate-500 text-sm">
+                    18+ • Играйте ответственно • Азартные игры могут вызывать зависимость
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed CTA Button for Mobile -->
+    <div class="fixed bottom-6 right-6 z-50 md:hidden">
+        <button class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl animate-bounce">
+            🎮
+        </button>
+    </div>
+
+    <script>
+        // Live counter animation
+        function updateLiveCounter() {
+            const counter = document.getElementById('live-counter');
+            const current = parseInt(counter.textContent.replace(/,/g, ''));
+            const increment = Math.floor(Math.random() * 500) + 100;
+            const newValue = current + increment;
+            counter.textContent = newValue.toLocaleString('ru-RU');
+        }
+
+        // Update counter every 5 seconds
+        setInterval(updateLiveCounter, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card-hover, .prize-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // CTA Button click handler
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Играть') || button.textContent.includes('🎮')) {
+                button.addEventListener('click', function() {
+                    // Add loading state
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '⏳ Загрузка...';
+                    this.disabled = true;
+
+                    // Simulate loading
+                    setTimeout(() => {
+                        // Age verification would happen here
+                        if (confirm('Открыть Telegram для игры GrabGifts?')) {
+                            window.open('https://t.me/Grab_Giftsbot/grabgifts?startapp=src_GGRU', '_blank');
+                        }
+
+                        // Restore button
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }, 1000);
+                });
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.gradient-bg');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Add floating animation delays
+        document.querySelectorAll('.animate-float').forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.5}s`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrabGifts.ru - Выигрывайте реальные призы в Telegram!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Container and Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .mobile-container {
+            max-width: 375px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .mobile-menu {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .game-preview {
+            max-width: 400px;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #333;
+            position: relative;
+        }
+
+        .game-screenshot {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .primary-cta {
+            background: #ff4757;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 30px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .primary-cta:hover {
+            background: #ff3742;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        .stats-banner {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .trust-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+
+        .trust-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .trust-label {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Company Logos */
+        .company-credibility {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .company-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .company-logo {
+            width: 120px;
+            height: 60px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .company-logo:hover {
+            opacity: 1;
+        }
+
+        /* Prizes Section */
+        .prizes-showcase {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .prize-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .prize-item:hover {
+            transform: translateY(-5px);
+            border-color: #ff4757;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .prize-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .prize-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .prize-value {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Recent Winners */
+        .recent-winners {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .winner-feed {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .winner-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .winner-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .winner-info {
+            flex: 1;
+        }
+
+        .winner-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .winner-prize {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .winner-time {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .secondary-cta {
+            background: white;
+            color: #667eea;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 30px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .secondary-cta:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero .subtitle {
+                font-size: 24px;
+            }
+
+            .mobile-container {
+                max-width: none;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .prizes-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+
+            .prize-item {
+                padding: 20px 10px;
+            }
+
+            .prize-image {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            .company-logos {
+                gap: 20px;
+            }
+
+            .company-logo {
+                width: 80px;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+
+        /* Image Placeholder System */
+        .image-placeholder {
+            background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf6 100%);
+            border: 2px dashed #9e9e9e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Loading Animation */
+        .loading-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Version Switcher */
+        .version-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .version-btn {
+            display: block;
+            padding: 10px 15px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 12px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .version-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .version-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Mobile-specific adjustments */
+        .mobile-view .container {
+            padding: 0;
+        }
+
+        .mobile-view .trust-signals,
+        .mobile-view .prizes-showcase,
+        .mobile-view .recent-winners {
+            padding: 40px 20px;
+        }
+
+        .mobile-view .company-credibility,
+        .mobile-view .footer-cta {
+            padding: 40px 20px;
+        }
+
+        /* Asset Requirements Overlay */
+        .asset-overlay {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 71, 87, 0.9);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Version Switcher -->
+    <div class="version-switcher">
+        <button class="version-btn active" onclick="switchToDesktop()">🖥️ Desktop</button>
+        <button class="version-btn" onclick="switchToMobile()">📱 Mobile</button>
+    </div>
+
+    <div class="mobile-container" id="viewport">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="#" class="logo">GrabGifts.ru</a>
+                    <nav class="nav-menu">
+                        <a href="#about">О нас</a>
+                        <a href="#how-to-play">Как играть</a>
+                        <a href="#prizes">Призы</a>
+                        <a href="#support">Поддержка</a>
+                    </nav>
+                    <button class="mobile-menu">☰</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Выигрывайте реальные призы в Telegram!</h1>
+                    <p class="subtitle">Официальная игра от Mighty Bear Games</p>
+
+                    <div class="game-preview">
+                        <div class="game-screenshot">
+                            🎮 GAMEPLAY PREVIEW
+                            <div class="asset-overlay">NEED: Game Screenshot</div>
+                        </div>
+                    </div>
+
+                    <button class="primary-cta" onclick="redirectToTelegram()">
+                        🚀 ИГРАТЬ В TELEGRAM
+                    </button>
+
+                    <div class="stats-banner">
+                        <strong>6+ миллионов игроков</strong> уже играют и выигрывают призы!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="trust-signals">
+            <div class="container">
+                <h2 class="section-title">Почему нам доверяют?</h2>
+
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-number">6M+</div>
+                        <div class="trust-label">Активных игроков</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">100%</div>
+                        <div class="trust-label">Честная игра</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">24/7</div>
+                        <div class="trust-label">Поддержка</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">🇸🇬</div>
+                        <div class="trust-label">Сингапур</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Credibility -->
+        <section class="company-credibility">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Команда мирового уровня</h2>
+                <p style="font-size: 18px; opacity: 0.9; margin-bottom: 30px;">
+                    Разработчики из ведущих игровых компаний
+                </p>
+
+                <div class="company-logos">
+                    <div class="company-logo">KING</div>
+                    <div class="company-logo">UBISOFT</div>
+                    <div class="company-logo">EA</div>
+                    <div class="company-logo">ROVIO</div>
+                </div>
+
+                <p style="font-size: 14px; opacity: 0.8;">
+                    Создатели GOAT Gaming и других успешных проектов
+                </p>
+            </div>
+        </section>
+
+        <!-- Prizes Showcase -->
+        <section class="prizes-showcase">
+            <div class="container">
+                <h2 class="section-title">Что можно выиграть?</h2>
+
+                <div class="prizes-grid">
+                    <div class="prize-item">
+                        <div class="prize-image">📱</div>
+                        <div class="prize-name">iPhone 15 Pro</div>
+                        <div class="prize-value">₽120,000</div>
+                        <div class="asset-overlay">NEED: Product Photo</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-image">🎮</div>
+                        <div class="prize-name">Steam карты</div>
+                        <div class="prize-value">₽5,000</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-image">🎧</div>
+                        <div class="prize-name">AirPods Pro</div>
+                        <div class="prize-value">₽25,000</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-image">💰</div>
+                        <div class="prize-name">Криптовалюта</div>
+                        <div class="prize-value">TON/BTC</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-image">🎁</div>
+                        <div class="prize-name">Подарочные карты</div>
+                        <div class="prize-value">₽10,000</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-image">⚡</div>
+                        <div class="prize-name">Эксклюзивы</div>
+                        <div class="prize-value">Лимитированные</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="primary-cta">🎁 ПОСМОТРЕТЬ ВСЕ ПРИЗЫ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Winners -->
+        <section class="recent-winners">
+            <div class="container">
+                <h2 class="section-title">Последние победители</h2>
+
+                <div class="winner-feed">
+                    <div class="winner-item">
+                        <div class="winner-avatar">АК</div>
+                        <div class="winner-info">
+                            <div class="winner-name">Александр К.</div>
+                            <div class="winner-prize">выиграл iPhone 15 Pro</div>
+                        </div>
+                        <div class="winner-time">2 мин назад</div>
+                    </div>
+
+                    <div class="winner-item">
+                        <div class="winner-avatar">МЛ</div>
+                        <div class="winner-info">
+                            <div class="winner-name">Мария Л.</div>
+                            <div class="winner-prize">получила Steam карту ₽5000</div>
+                        </div>
+                        <div class="winner-time">15 мин назад</div>
+                    </div>
+
+                    <div class="winner-item">
+                        <div class="winner-avatar">ДП</div>
+                        <div class="winner-info">
+                            <div class="winner-name">Дмитрий П.</div>
+                            <div class="winner-prize">выиграл AirPods Pro</div>
+                        </div>
+                        <div class="winner-time">1 час назад</div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
+                    Показаны последние 24 часа • <strong>Данные обновляются в реальном времени</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">Готовы выиграть?</h2>
+                <p style="font-size: 18px; margin-bottom: 30px;">
+                    Присоединяйтесь к миллионам игроков прямо сейчас!
+                </p>
+
+                <button class="secondary-cta" onclick="redirectToTelegram()">
+                    🎮 НАЧАТЬ ИГРАТЬ В TELEGRAM
+                </button>
+
+                <p style="font-size: 16px; margin-top: 20px;">
+                    ⭐ <strong>Бонус +100 баллов</strong> для новых игроков!
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-links">
+                    <a href="#terms">Правила</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                    <a href="#support">Поддержка</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <p>© 2024 Mighty Bear Games Pte Ltd. Все права защищены.</p>
+                <p style="margin-top: 10px; opacity: 0.7;">
+                    Зарегистрировано в Сингапуре • Игра 18+ • Играйте ответственно
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Asset Requirements Panel -->
+    <div style="position: fixed; bottom: 20px; left: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 15px; max-width: 300px; font-size: 12px; z-index: 1000;">
+        <strong>🖼️ REQUIRED ASSETS:</strong><br>
+        • Game screenshots/video (400x250px)<br>
+        • Product photos (300x300px)<br>
+        • Team headshots<br>
+        • Company logos<br>
+        • Winner testimonials<br>
+        <a href="#" style="color: #667eea; font-weight: bold;">View detailed asset list →</a>
+    </div>
+
+    <script>
+        function switchToMobile() {
+            document.body.classList.add('mobile-view');
+            document.getElementById('viewport').style.maxWidth = '375px';
+            document.querySelector('.version-btn.active').classList.remove('active');
+            event.target.classList.add('active');
+        }
+
+        function switchToDesktop() {
+            document.body.classList.remove('mobile-view');
+            document.getElementById('viewport').style.maxWidth = 'none';
+            document.querySelector('.version-btn.active').classList.remove('active');
+            event.target.classList.add('active');
+        }
+
+        function redirectToTelegram() {
+            // Age verification check would happen here
+            if (confirm('Переход в Telegram для игры. Продолжить?')) {
+                window.open('https://t.me/Grab_Giftsbot/grabgifts?startapp=src_GGRU', '_blank');
+            }
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const stats = document.querySelector('.stats-banner strong');
+            if (stats) {
+                const current = parseInt(stats.textContent.replace(/[^\d]/g, ''));
+                stats.textContent = `${(current + Math.floor(Math.random() * 3)).toLocaleString()}+ миллионов игроков`;
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
