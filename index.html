@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>GrabGifts - Выиграть Подарки в Telegram | Лучшая Игра с Призами 2025</title>
-    <meta name="description" content="🎁 Играйте в GrabGifts и выигрывайте реальные Telegram подарки, НФТ, iPhone 15, PlayStation 5, криптовалюту! Официальная игра с честными выигрышами. Более 6.2М игроков уже получили призы!">
-    <meta name="keywords" content="telegram подарки, выиграть подарки telegram, telegram игры с призами, нфт подарки, бесплатные подарки тг, telegram мини игры, коллекционные подарки telegram, выиграть iphone telegram, честные игры с призами">
+    <title>🎁 Telegram Подарки Бесплатно - Выиграть Сегодня!</title>
+    <meta name="description" content="🎁 Выигрывайте Telegram подарки бесплатно! Лучшие Telegram игры с призами 2025. НФТ, iPhone, криптовалюта TON. 6.2М игроков, честные выплаты 24/7!">
+    <meta name="keywords" content="telegram подарки, telegram игры, выиграть подарки telegram, telegram игры с призами, бесплатные подарки telegram, нфт подарки, telegram мини игры, коллекционные подарки telegram, telegram подарки бесплатно, честные игры с призами">
 
     <!-- Yandex Verification -->
     <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE">
@@ -21,8 +21,8 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="GrabGifts - Выиграть Подарки в Telegram | Лучшая Игра с Призами 2025">
-    <meta property="og:description" content="🎁 Играйте в GrabGifts и выигрывайте реальные Telegram подарки, НФТ, iPhone 15, PlayStation 5, криптовалюту! Более 6.2М игроков уже получили призы!">
+    <meta property="og:title" content="🎁 Telegram Подарки Бесплатно - Выиграть Сегодня!">
+    <meta property="og:description" content="🎁 Выигрывайте Telegram подарки бесплатно! Лучшие Telegram игры с призами 2025. НФТ, iPhone, криптовалюта TON. 6.2М игроков, честные выплаты 24/7!">
     <meta property="og:url" content="https://grabgifts.ru/">
     <meta property="og:site_name" content="GrabGifts">
     <meta property="og:image" content="https://grabgifts.ru/Public/Images/og-image.png">
@@ -32,8 +32,8 @@
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GrabGifts - Выиграть Подарки в Telegram | Лучшая Игра с Призами 2025">
-    <meta name="twitter:description" content="🎁 Играйте в GrabGifts и выигрывайте реальные Telegram подарки, НФТ, iPhone 15, PlayStation 5, криптовалюту!">
+    <meta name="twitter:title" content="🎁 Telegram Подарки Бесплатно - Выиграть Сегодня!">
+    <meta name="twitter:description" content="🎁 Выигрывайте Telegram подарки бесплатно! Лучшие Telegram игры с призами 2025. НФТ, iPhone, криптовалюта TON. 6.2М игроков!">
     <meta name="twitter:image" content="https://grabgifts.ru/Public/Images/og-image.png">
 
     <!-- Structured Data -->
@@ -106,6 +106,17 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
         }
 
         /* Modern Glassmorphism Header */
@@ -123,8 +134,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 clamp(16px, 5vw, 80px);
+            padding: 0 clamp(16px, 3vw, 40px);
             transition: all 0.3s ease;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
         }
 
         .logo {
@@ -173,15 +188,17 @@
             background: var(--gradient-cta);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 12px clamp(16px, 3vw, 24px);
             border-radius: var(--radius-lg);
             font-weight: 700;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-soft);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .cta-button:hover {
@@ -435,6 +452,7 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .feature-card::before {
@@ -468,7 +486,7 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            margin-bottom: 24px;
+            margin: 0 auto 24px auto;
         }
 
         .feature-title {
@@ -496,6 +514,237 @@
             gap: 32px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* Premium Gifts Showcase - Revolutionary Design */
+        .gifts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gift-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .gift-card:hover::before {
+            opacity: 1;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Rarity-based styling */
+        .gift-card[data-rarity="legendary"] {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            animation: legendaryGlow 2s ease-in-out infinite alternate;
+        }
+
+        .gift-card[data-rarity="legendary"]:hover {
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5),
+                        0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-card[data-rarity="epic"] {
+            border-color: #9d4edd;
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.2);
+        }
+
+        .gift-card[data-rarity="epic"]:hover {
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.4),
+                        0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-card[data-rarity="rare"] {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .gift-card[data-rarity="rare"]:hover {
+            box-shadow: 0 0 35px rgba(14, 165, 233, 0.4),
+                        0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-image-container {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .gift-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+        }
+
+        .gift-card:hover img {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
+        }
+
+        /* Floating particles animation */
+        .gift-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .gift-particles::before,
+        .gift-particles::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: floatParticles 3s infinite ease-in-out;
+        }
+
+        .gift-particles::before {
+            background: #ffd700;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .gift-particles::after {
+            background: #9d4edd;
+            top: 70%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatParticles {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+        }
+
+        .gift-name {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .gift-rarity {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), #9d4edd);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gift-card[data-rarity="legendary"] .gift-rarity {
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+            color: #000;
+        }
+
+        .gift-card[data-rarity="epic"] .gift-rarity {
+            background: linear-gradient(135deg, #9d4edd, #c084fc);
+        }
+
+        .gift-card[data-rarity="rare"] .gift-rarity {
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+        }
+
+        .gift-value {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .gift-value::before {
+            content: '💎';
+            font-size: 14px;
+        }
+
+        .gift-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gift-stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .gift-stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .gift-stat-value {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Pulsing glow for legendary items */
+        @keyframes legendaryGlow {
+            0% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+            }
         }
 
         .screenshot-card {
@@ -692,9 +941,10 @@
     <header class="header">
         <div class="logo">GRABGIFTS</div>
         <nav class="nav-menu">
-            <a href="#features" class="nav-link">Особенности</a>
-            <a href="#gallery" class="nav-link">Скриншоты</a>
+            <a href="#about" class="nav-link">О нас</a>
+            <a href="#gallery" class="nav-link">Как играть</a>
             <a href="#prizes" class="nav-link">Призы</a>
+            <a href="#faq" class="nav-link">FAQ</a>
         </nav>
         <button class="cta-button" onclick="openTelegramGame()">Играть сейчас</button>
     </header>
@@ -707,10 +957,10 @@
                 <span>Официальная игра от Mighty Bear Games</span>
             </div>
 
-            <h1 class="hero-title">Выиграть Подарки в Telegram - Лучшая Игра с Призами!</h1>
+            <h1 class="hero-title">Telegram Подарки Бесплатно - Лучшие Игры с Призами!</h1>
 
             <p class="hero-subtitle">
-                🎁 Играйте в GrabGifts и выигрывайте реальные <strong>Telegram подарки</strong>, <strong>НФТ подарки</strong>, криптовалюту TON и эксклюзивные цифровые коллекционные предметы! Физические призы (iPhone, PlayStation) скоро будут добавлены. Более 6.2 миллиона игроков уже получили свои выигрыши.
+                🎁 Выигрывай Telegram Gifts, NFT и TON криптовалюту в GrabGifts - 35K+ игроков уже получили призы!
             </p>
 
             <div class="hero-game-preview">
@@ -732,16 +982,16 @@
     <section class="stats">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value" data-count="6200000">6.2M+</div>
+                <div class="stat-value">35K+</div>
                 <div class="stat-label">Активных игроков</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" data-count="50000">₽50K+</div>
-                <div class="stat-label">Ежедневных выигрышей</div>
+                <div class="stat-value">Instant</div>
+                <div class="stat-label">Мгновенный вывод</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" data-count="99">99%</div>
-                <div class="stat-label">Довольных игроков</div>
+                <div class="stat-value">TON</div>
+                <div class="stat-label">Только на блокчейне TON</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">24/7</div>
@@ -754,7 +1004,7 @@
     <section class="features" id="features">
         <div class="section-header">
             <h2 class="section-title">Почему миллионы игроков выбирают GrabGifts для выигрыша Telegram подарков?</h2>
-            <p class="section-subtitle">Единственная официальная игра с реальными <strong>Telegram подарками</strong>, <strong>НФТ призами</strong> и мгновенными выплатами. Присоединяйтесь к 6.2М+ довольных игроков!</p>
+            <p class="section-subtitle">Создано сингапурским разработчиком <strong>Mighty Bear Games</strong>, создателем хитов <strong>Butter Royale</strong>, <strong>Mighty Action Heroes</strong> и <strong>GOAT Gaming</strong></p>
         </div>
 
         <div class="features-grid">
@@ -767,19 +1017,19 @@
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3 class="feature-title">Мгновенные выплаты</h3>
-                <p class="feature-description">Все выигрыши автоматически зачисляются на ваш кошелек в течение 24 часов без комиссий.</p>
+                <p class="feature-description">Все выигрыши автоматически зачисляются на ваш кошелек в течение 24 часов.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
-                <h3 class="feature-title">100% честность</h3>
-                <p class="feature-description">Лицензированная игра с прозрачной системой розыгрышей и подтвержденными алгоритмами честности.</p>
+                <h3 class="feature-title">Provably Fair</h3>
+                <p class="feature-description">Прозрачная система розыгрышей с подтвержденными алгоритмами честности на блокчейне TON.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🚀</div>
                 <h3 class="feature-title">Лучшая Telegram Мини Игра 2025</h3>
-                <p class="feature-description">Просто открывайте сундуки, собирайте баллы и обменивайте их на <strong>бесплатные подарки ТГ</strong>. Играйте в самую популярную мини игру прямо в Telegram!</p>
+                <p class="feature-description">Забирайте бесплатный Telegram Gift Box каждый день чтобы получить TON, подарки и многое другое!</p>
             </div>
 
             <div class="feature-card">
@@ -797,7 +1047,7 @@
     </section>
 
     <!-- About Us Section -->
-    <section class="about-section" style="padding: 120px clamp(16px, 5vw, 80px); background: var(--dark); position: relative;">
+    <section id="about" class="about-section" style="padding: 120px clamp(16px, 5vw, 80px); background: var(--dark); position: relative;">
         <div class="about-content" style="max-width: 1200px; margin: 0 auto;">
             <div class="section-header">
                 <h2 class="section-title">О GrabGifts и Mighty Bear Games</h2>
@@ -809,26 +1059,34 @@
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
                         <div style="width: 80px; height: 80px; background: var(--gradient-cta); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 32px;">🏢</div>
                         <div>
-                            <h3 style="font-size: 28px; font-weight: 800; color: #F97316; margin-bottom: 8px;">О Компании</h3>
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 16px;">Mighty Bear Games Pte Ltd</p>
+                            <h3 style="font-size: 28px; font-weight: 800; color: #F97316; margin-bottom: 8px;">🏢 Наша История</h3>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 16px;">Mighty Bear Games — Премиум Студия из Сингапура</p>
                         </div>
                     </div>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">GrabGifts разработан командой <strong>Mighty Bear Games</strong> — ведущей сингапурской студии мобильных игр, специализирующейся на социальных играх и Web3 технологиях. Основанная в 2017 году, компания создала множество успешных проектов с аудиторией более 50 миллионов пользователей по всему миру.</p>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Наша миссия — сделать игровой опыт максимально справедливым, прозрачным и вознаграждающим. Мы первыми интегрировались с официальной системой Telegram Gifts, что позволяет игрокам получать настоящие коллекционные NFT прямо в мессенджере.</p>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">Все наши игры лицензированы в Сингапуре и соответствуют международным стандартам безопасности и честности. GrabGifts — это результат более чем 2-летней разработки и тестирования, направленной на создание идеального баланса между увлекательностью и справедливостью.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">GrabGifts создан Mighty Bear Games, сингапурской студией с более чем 10-летним опытом в мобильных играх и блокчейн-инновациях.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Мы уже доказали, что работает в Telegram через <strong>GOAT Gaming</strong> — масштабировались до 6М+ активных пользователей, 100М+ он-чейн транзакций и бесшовной интеграции с TON. Этот опыт показал нам, что действительно ценит миллиардное сообщество Telegram: мгновенные награды, прозрачность и долговечное веселье.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">GrabGifts — это следующий шаг: не просто гача, а экосистема мини-игр, навыковых испытаний, соревнований и коллекционных витрин — разработанная для уникальной культуры Telegram.</p>
                 </div>
 
                 <div class="about-card" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-xl); padding: 48px; transition: all 0.3s ease;">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
                         <div style="width: 80px; height: 80px; background: var(--gradient-cta); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 32px;">🎮</div>
                         <div>
-                            <h3 style="font-size: 28px; font-weight: 800; color: #EC4899; margin-bottom: 8px;">О Проекте</h3>
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 16px;">Революция в мире Telegram игр</p>
+                            <h3 style="font-size: 28px; font-weight: 800; color: #EC4899; margin-bottom: 8px;">🎮 Команда За GrabGifts</h3>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 16px;">Ветераны индустрии с десятилетиями опыта</p>
                         </div>
                     </div>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">GrabGifts — это не просто игра, а целая экосистема, объединяющая развлечения, коллекционирование и реальные вознаграждения. Проект стал первой игрой в Telegram, полностью интегрированной с официальной системой подарков, что позволяет игрокам выигрывать <strong>настоящие NFT подарки</strong>, которые становятся частью их профиля.</p>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Уникальность нашего подхода заключается в сочетании простого, но увлекательного игрового процесса с возможностью получения реальных ценностей. Каждый сундук, который вы открываете, может содержать редкие <strong>коллекционные подарки Telegram</strong>, стоимость которых на маркетплейсе достигает десятков тысяч рублей.</p>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">Мы постоянно развиваем проект: добавляем новые типы подарков, расширяем призовой фонд и внедряем инновационные игровые механики. В планах на 2025 год — запуск физических призов, включая iPhone 15, PlayStation 5, и даже автомобили для самых удачливых игроков.</p>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Основная студия: Mighty Bear Games — создатели Mighty Action Heroes и 35+ выпущенных игр.</p>
+
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Родословная руководства: Экс-King, Ubisoft, Gameloft и LucasArts — те же люди, которые создали глобальные хиты, в которые играют сотни миллионов.</p>
+
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Проверенные операторы: Масштабировали GOAT Gaming до миллионов пользователей Telegram с устойчивой экономикой и реальной он-чейн утилитой.</p>
+
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">AI-нативная ДНК: С 2022 года наша команда пионерила собственные AI-инструменты в игровом дизайне, UA и лайв-опсах — теперь применяемые напрямую к Telegram.</p>
+
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;">Поддерживается ведущими инвесторами: Framework, TON Ventures, Mirana — партнеры, которые разделяют наше видение построения экономики Telegram.</p>
+
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 24px;"><strong>👉 Что это значит для вас:</strong> игры, которые веселые, без трения и созданы на долгий срок — созданные командой с послужным списком и поддержкой для реализации.</p>
                 </div>
             </div>
 
@@ -843,27 +1101,160 @@
                 <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 32px; max-width: 800px; margin-left: auto; margin-right: auto;">Это единственная игра данного типа, одобренная командой Telegram и интегрированная с официальной системой подарков. Такая интеграация гарантирует, что все выигранные вами <strong>НФТ подарки</strong> будут иметь полную юридическую силу и смогут свободно продаваться на всех официальных маркетплейсах.</p>
                 <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
                     <div style="text-align: center;">
-                        <div style="font-size: 24px; font-weight: 800; color: #F97316; margin-bottom: 4px;">2+ года</div>
-                        <div style="color: rgba(255, 255, 255, 0.6);">разработки</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #F97316; margin-bottom: 4px;">10+ лет</div>
+                        <div style="color: rgba(255, 255, 255, 0.6);">опыта в индустрии</div>
                     </div>
                     <div style="text-align: center;">
-                        <div style="font-size: 24px; font-weight: 800; color: #EC4899; margin-bottom: 4px;">50М+</div>
-                        <div style="color: rgba(255, 255, 255, 0.6);">игроков в портфолио</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #EC4899; margin-bottom: 4px;">6М+</div>
+                        <div style="color: rgba(255, 255, 255, 0.6);">игроков GOAT Gaming</div>
                     </div>
                     <div style="text-align: center;">
-                        <div style="font-size: 24px; font-weight: 800; color: #7C3AED; margin-bottom: 4px;">100%</div>
-                        <div style="color: rgba(255, 255, 255, 0.6);">официальная интеграция</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #7C3AED; margin-bottom: 4px;">50+</div>
+                        <div style="color: rgba(255, 255, 255, 0.6);">лет коллективного опыта</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
+    <!-- Prizes Section -->
+    <section id="prizes" class="gallery">
         <div class="section-header">
-            <h2 class="section-title">Скриншоты игры</h2>
-            <p class="section-subtitle">Посмотрите, как выглядит игра и какие призы вы можете выиграть</p>
+            <h2 class="section-title">Exclusive Telegram Gifts Collection</h2>
+            <p class="section-subtitle">💎 Откройте для себя редкие и легендарные подарки, которые вы можете выиграть в GrabGifts! Каждый подарок имеет реальную стоимость в TON.</p>
+        </div>
+
+        <div class="gifts-grid">
+            <!-- Legendary Tier -->
+            <div class="gift-card" data-rarity="legendary">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="Public/Images/durovcap.png" alt="Durov Cap - Legendary Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Legendary</div>
+                <div class="gift-name">Durov Cap 🧢</div>
+                <div class="gift-value">808 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">74.7/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">3,847</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gift-card" data-rarity="epic">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="Public/Images/lootbag.png" alt="Loot Bag - Epic Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Epic</div>
+                <div class="gift-name">Loot Bag 💰</div>
+                <div class="gift-value">90 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">85.2/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">2,156</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Epic Tier -->
+            <div class="gift-card" data-rarity="legendary">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="Public/Images/Plush Pepe.png" alt="Plush Pepe - Legendary Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Legendary</div>
+                <div class="gift-name">Plush Pepe 🐸</div>
+                <div class="gift-value">4800 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">78.9/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">8,642</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gift-card" data-rarity="epic">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="assets/gifts/swiss-watch.png" alt="Swiss Watch - Epic Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Epic</div>
+                <div class="gift-name">Swiss Watch ⌚</div>
+                <div class="gift-value">38 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">75.1/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">12,406</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rare Tier -->
+            <div class="gift-card" data-rarity="epic">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="assets/gifts/gem-signet.png" alt="Gem Signet - Epic Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Epic</div>
+                <div class="gift-name">Gem Signet 💍</div>
+                <div class="gift-value">65 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">72.4/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">4,892</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gift-card" data-rarity="rare">
+                <div class="gift-particles"></div>
+                <div class="gift-image-container">
+                    <img src="Public/Images/hypnolollipop.png" alt="Hypno Lollipop - Rare Gift" loading="lazy">
+                </div>
+                <div class="gift-rarity">Rare</div>
+                <div class="gift-name">Hypno Lollipop 🍭</div>
+                <div class="gift-value">2 TON</div>
+                <div class="gift-stats">
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Редкость</div>
+                        <div class="gift-stat-value">77.6/100</div>
+                    </div>
+                    <div class="gift-stat">
+                        <div class="gift-stat-label">Владельцы</div>
+                        <div class="gift-stat-value">7,212</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section (Screenshots) -->
+    <section id="gallery" class="gallery" style="background: var(--dark-secondary);">
+        <div class="section-header">
+            <h2 class="section-title">Как играть в GrabGifts</h2>
+            <p class="section-subtitle">Посмотрите скриншоты игры и узнайте, как легко начать выигрывать</p>
         </div>
 
         <div class="screenshots-grid">
@@ -947,7 +1338,7 @@
                     <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 20px;">Подробное руководство по стратегиям выигрыша в GrabGifts. Узнайте секреты получения редких НФТ подарков и криптовалюты.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">15 минут чтения</span>
-                        <a href="#blog" style="color: #F97316; font-weight: 600; text-decoration: none;">Читать →</a>
+                        <a href="blog-ton-gifts.html" style="color: #F97316; font-weight: 600; text-decoration: none;">Читать →</a>
                     </div>
                 </article>
 
@@ -957,7 +1348,7 @@
                     <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 20px;">Обзор самых популярных мини игр в Telegram с реальными выплатами. Сравнение призовых фондов и честности.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">20 минут чтения</span>
-                        <a href="#blog" style="color: #EC4899; font-weight: 600; text-decoration: none;">Читать →</a>
+                        <a href="blog-telegram-games.html" style="color: #EC4899; font-weight: 600; text-decoration: none;">Читать →</a>
                     </div>
                 </article>
 
@@ -967,7 +1358,7 @@
                     <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 20px;">Аналитика рынка коллекционных подарков Telegram. Как заработать на трейдинге редких НФТ.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">12 минут чтения</span>
-                        <a href="#blog" style="color: #7C3AED; font-weight: 600; text-decoration: none;">Читать →</a>
+                        <a href="blog-blockchain-rewards.html" style="color: #7C3AED; font-weight: 600; text-decoration: none;">Читать →</a>
                     </div>
                 </article>
             </div>
@@ -980,32 +1371,57 @@
     </section>
 
     <!-- FAQ Section -->
-    <section style="padding: 80px clamp(16px, 5vw, 80px); background: var(--dark);">
+    <section id="faq" style="padding: 80px clamp(16px, 5vw, 80px); background: var(--dark);">
         <div style="max-width: 1000px; margin: 0 auto;">
             <div class="section-header">
-                <h2 class="section-title">Часто Задаваемые Вопросы о Telegram Подарках</h2>
-                <p class="section-subtitle">Ответы на самые популярные вопросы о GrabGifts и выигрыше призов</p>
+                <h2 class="section-title">Часто Задаваемые Вопросы</h2>
+                <p class="section-subtitle">Найдите ответы на свои вопросы об игре и наградах в нашей увлекательной Telegram игре!</p>
             </div>
 
             <div style="display: grid; gap: 24px; margin-top: 60px;">
                 <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <summary style="font-size: 18px; font-weight: 600; color: #F97316; cursor: pointer; margin-bottom: 16px;">Можно ли реально выиграть подарки в Telegram через GrabGifts?</summary>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Да, абсолютно! Более 620,000 игроков уже получили реальные призы на общую сумму свыше 50 млн рублей. Каждый выигрыш документируется и выплачивается в течение 24 часов. Вы можете увидеть отзывы победителей в нашем Telegram канале.</p>
+                    <summary style="font-size: 18px; font-weight: 600; color: #F97316; cursor: pointer; margin-bottom: 16px;">Как получить бесплатные Telegram подарки в GrabGifts?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Откройте бота GrabGifts (@Grab_GiftsBot) в Telegram, нажмите "Получить бесплатный сундук", и вы будете получать бесплатный подарочный сундук каждые 24 часа. Каждый сундук выплачивает — вы получите либо Telegram NFT подарок, криптовалюту TON, либо премиум стикеры.</p>
                 </details>
 
                 <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <summary style="font-size: 18px; font-weight: 600; color: #EC4899; cursor: pointer; margin-bottom: 16px;">Что такое НФТ подарки и как их можно продать?</summary>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">НФТ подарки Telegram - это коллекционные цифровые предметы, которые можно продавать на официальных маркетплейсах. Редкие подарки могут стоить от 1,000 до 100,000 рублей. Продажа происходит прямо в Telegram через встроенную систему.</p>
+                    <summary style="font-size: 18px; font-weight: 600; color: #EC4899; cursor: pointer; margin-bottom: 16px;">Какие призы можно выиграть?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">GrabGifts разыгрывает популярные NFT подарки как Плюшевый Пепе, Кепка Дурова, коллекционные предметы Снуп Дога, швейцарские часы и лимитированные валентинские подарки — плюс TON токены и премиум наборы стикеров. Все цифровые призы можно показывать в вашем профиле Telegram или конвертировать в Stars.</p>
                 </details>
 
                 <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <summary style="font-size: 18px; font-weight: 600; color: #7C3AED; cursor: pointer; margin-bottom: 16px;">Безопасна ли игра GrabGifts для моих данных?</summary>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Полностью безопасна. GrabGifts работает через официальную систему Telegram Mini Apps и не требует доступа к вашим личным данным. Игра сертифицирована и соответствует всем международным стандартам безопасности.</p>
+                    <summary style="font-size: 18px; font-weight: 600; color: #7C3AED; cursor: pointer; margin-bottom: 16px;">Как премиум подарочные сундуки увеличивают мои шансы?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Бесплатные сундуки всегда выплачивают, но Нефритовые (1 TON), Рубиновые (5 TON) и Алмазные (50 TON) сундуки предлагают более высокую вероятность получения ценных подарков. Если вы охотитесь за призами как Кепка Дурова или коллекционные предметы Снуп Дога, которые продавались за тысячи, премиум сундуки — самый быстрый путь.</p>
                 </details>
 
                 <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <summary style="font-size: 18px; font-weight: 600; color: #06B6D4; cursor: pointer; margin-bottom: 16px;">Как часто проходят розыгрыши больших призов?</summary>
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Ежедневно мы разыгрываем призы на сумму более 50,000 рублей. Крупные призы (iPhone, PlayStation) разыгрываются еженедельно, а суперпризы (автомобили, квартиры) - ежемесячно среди самых активных игроков.</p>
+                    <summary style="font-size: 18px; font-weight: 600; color: #06B6D4; cursor: pointer; margin-bottom: 16px;">Является ли GrabGifts легальным и безопасным?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Да. GrabGifts создан Mighty Bear Games, регулируемой сингапурской студией. Он работает внутри официальной экосистемы мини-приложений Telegram (с более чем 1 миллиардом пользователей) и использует блокчейн TON для прозрачных, безопасных наград.</p>
+                </details>
+
+                <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <summary style="font-size: 18px; font-weight: 600; color: #10B981; cursor: pointer; margin-bottom: 16px;">Можно ли конвертировать или продавать Telegram подарки?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Абсолютно. Редкие подарки можно конвертировать в Stars или создать как NFT на блокчейне TON. Как с дропом Снуп Дога (где они разблокируются для вторичных рынков через 21 день после получения).</p>
+                </details>
+
+                <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <summary style="font-size: 18px; font-weight: 600; color: #8B5CF6; cursor: pointer; margin-bottom: 16px;">Чем GrabGifts отличается от других Telegram приложений с подарками?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Конкурирующие приложения как Case или Gifts Battle требуют платить за шанс выиграть. GrabGifts гарантирует бесплатную ежедневную награду каждому и подкрепляет это знаменитыми NFT дропами от Mighty Bear Games (сингапурской зарегистрированной компании). Это способ без риска накапливать коллекционные Telegram подарки ежедневно.</p>
+                </details>
+
+                <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <summary style="font-size: 18px; font-weight: 600; color: #F59E0B; cursor: pointer; margin-bottom: 16px;">Сколько стоят Telegram Stars и сколько Stars используют подарки?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Telegram Stars — это внутренняя валюта Telegram. Цены варьируются по пакетам, но эффективная ставка примерно $0.013 за Star и часто ниже в больших пакетах. Большинство анимированных подарков стоят от 10 до 10,000 Stars, а знаменитости или лимитированные дропы могут быть дороже. Вы можете купить Stars прямо в приложении Telegram (iOS/Android) и тратить их на подарки, премиум функции или платежи создателям.</p>
+                </details>
+
+                <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <summary style="font-size: 18px; font-weight: 600; color: #EF4444; cursor: pointer; margin-bottom: 16px;">Где можно торговать Telegram Gift NFT и какие комиссии?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">После конвертации подарка в NFT на блокчейне TON, вы можете разместить его на маркетплейсах таких как Portals (главный торговый хаб для Telegram Gift NFT). Комиссии сети TON ("газ") обычно несколько центов, а комиссии маркетплейсов варьируются по платформам. Помните, что улучшенные подарки разблокируются для перепродажи через 21 день.</p>
+                </details>
+
+                <details style="background: rgba(255, 255, 255, 0.05); padding: 24px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <summary style="font-size: 18px; font-weight: 600; color: #06B6D4; cursor: pointer; margin-bottom: 16px;">Как распознать лимитированные дропы и избежать поддельных Telegram подарков?</summary>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Лимитированные дропы анонсируются в официальных Telegram каналах, проверенных страницах проектов или прямо в магазине подарков приложения. Избегайте ссылок, которые просят seed-фразы или платежи вне платформы — законные покупки происходят внутри Telegram используя Stars. Проверяйте таймер дропа, размер тиража и верификацию создателя перед покупкой.</p>
                 </details>
             </div>
         </div>
@@ -1015,26 +1431,25 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>GrabGifts - Выиграть Подарки в Telegram</h3>
-                <p>Официальная <strong>Telegram мини игра</strong> с реальными <strong>Telegram подарками</strong>, <strong>НФТ призами</strong> и денежными выигрышами. Более 6.2М довольных игроков по всему миру!</p>
-                <p style="margin-top: 12px; font-size: 14px;"><strong>Ключевые слова:</strong> telegram подарки, выиграть подарки telegram, нфт подарки, telegram игры с призами, бесплатные подарки тг</p>
+                <h3>GrabGifts - Win Gifts on Telegram</h3>
+                <p>Official <strong>Telegram mini game</strong> with <strong>Telegram gifts</strong>, <strong>NFT and other real prizes</strong>.</p>
+                <p style="margin-top: 12px; font-size: 14px; visibility: hidden;"><strong>Keywords:</strong> telegram gifts, win telegram gifts, nft gifts, telegram games with prizes, free tg gifts</p>
             </div>
             <div class="footer-section">
-                <h3>Поддержка</h3>
-                <p><a href="#support">Центр помощи</a></p>
-                <p><a href="#contact">Связаться с нами</a></p>
-                <p><a href="#faq">Частые вопросы</a></p>
+                <h3>Support</h3>
+                <p><a href="https://t.me/frenswithbens/30" target="_blank">Support Center</a></p>
+                <p><a href="#contact">Contact us</a></p>
+                <p><a href="#faq">Frequent questions</a></p>
             </div>
             <div class="footer-section">
-                <h3>Правовая информация</h3>
-                <p><a href="#terms">Правила игры</a></p>
-                <p><a href="#privacy">Конфиденциальность</a></p>
-                <p><a href="#responsible">Ответственная игра</a></p>
+                <h3>Legal information</h3>
+                <p><a href="#terms">Rules of the game</a></p>
+                <p><a href="privacy-policy.html">Privacy Policy</a></p>
             </div>
             <div class="footer-section">
-                <h3>Контакты</h3>
+                <h3>Contacts</h3>
                 <p>Mighty Bear Games Pte Ltd</p>
-                <p>Сингапур • Лицензия</p>
+                <p>Singapore</p>
                 <p>support@grabgifts.ru</p>
             </div>
         </div>
