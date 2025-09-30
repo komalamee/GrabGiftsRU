@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://grabgifts.ru/sitemap.xml
+
+# Yandex specific directives
+User-agent: Yandex
+Allow: /
+
+# Google specific directives
+User-agent: Googlebot
+Allow: /
+
+# Bing specific directives
+User-agent: Bingbot
+Allow: /
+
+# Disallow admin and private areas (if any exist in future)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /index.html
+Allow: /privacy-policy.html
+Allow: /blog-*.html
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

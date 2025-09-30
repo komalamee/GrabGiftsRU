@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Main homepage -->
+    <url>
+        <loc>https://grabgifts.ru/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://grabgifts.ru/" />
+
+        <!-- Main hero image -->
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/betterhero.png</image:loc>
+            <image:title>GrabGifts - Telegram Подарки Бесплатно</image:title>
+            <image:caption>Лучшая игра для выигрыша подарков в Telegram</image:caption>
+        </image:image>
+
+        <!-- Gift images -->
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/durovcap.png</image:loc>
+            <image:title>Durov Cap - Legendary Gift</image:title>
+            <image:caption>Легендарный подарок Кепка Дурова стоимостью 808 TON</image:caption>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/lootbag.png</image:loc>
+            <image:title>Loot Bag - Epic Gift</image:title>
+            <image:caption>Эпический подарок Loot Bag стоимостью 90 TON</image:caption>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/Plush Pepe.png</image:loc>
+            <image:title>Plush Pepe - Legendary Gift</image:title>
+            <image:caption>Легендарный подарок Плюшевый Пепе стоимостью 4800 TON</image:caption>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/hypnolollipop.png</image:loc>
+            <image:title>Hypno Lollipop - Rare Gift</image:title>
+            <image:caption>Редкий подарок Hypno Lollipop стоимостью 2 TON</image:caption>
+        </image:image>
+
+        <!-- Game screenshots -->
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/Screenshot1.png</image:loc>
+            <image:title>GrabGifts Screenshot 1</image:title>
+            <image:caption>Скриншот игры GrabGifts - интерфейс получения подарков</image:caption>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/Screenshot2.png</image:loc>
+            <image:title>GrabGifts Screenshot 2</image:title>
+            <image:caption>Скриншот игры GrabGifts - коллекция подарков</image:caption>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/Screenshot3.png</image:loc>
+            <image:title>GrabGifts Screenshot 3</image:title>
+            <image:caption>Скриншот игры GrabGifts - игровой процесс</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Privacy Policy page -->
+    <url>
+        <loc>https://grabgifts.ru/privacy-policy.html</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/privacy-policy.html" />
+    </url>
+
+    <!-- Blog: TON Gifts article -->
+    <url>
+        <loc>https://grabgifts.ru/blog-ton-gifts.html</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-ton-gifts.html" />
+    </url>
+
+    <!-- Blog: Telegram Games article -->
+    <url>
+        <loc>https://grabgifts.ru/blog-telegram-games.html</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-telegram-games.html" />
+    </url>
+
+    <!-- Blog: Blockchain Rewards article -->
+    <url>
+        <loc>https://grabgifts.ru/blog-blockchain-rewards.html</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-blockchain-rewards.html" />
+    </url>
+
+    <!-- Homepage sections as deep links -->
+    <url>
+        <loc>https://grabgifts.ru/#about</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://grabgifts.ru/#features</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://grabgifts.ru/#prizes</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://grabgifts.ru/#gallery</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://grabgifts.ru/#faq</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>
