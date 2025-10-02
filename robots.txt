@@ -23,6 +23,7 @@ Disallow: /private/
 # Allow important pages
 Allow: /index.html
 Allow: /privacy-policy.html
+Allow: /terms.html
 Allow: /blog-*.html
 
 # Crawl delay for respectful crawling

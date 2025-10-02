@@ -33,7 +33,7 @@
         </image:image>
 
         <image:image>
-            <image:loc>https://grabgifts.ru/Public/Images/Plush Pepe.png</image:loc>
+            <image:loc>https://grabgifts.ru/Public/Images/Plush%20Pepe.png</image:loc>
             <image:title>Plush Pepe - Legendary Gift</image:title>
             <image:caption>Легендарный подарок Плюшевый Пепе стоимостью 4800 TON</image:caption>
         </image:image>
@@ -62,6 +62,15 @@
             <image:title>GrabGifts Screenshot 3</image:title>
             <image:caption>Скриншот игры GrabGifts - игровой процесс</image:caption>
         </image:image>
+    </url>
+
+    <!-- Terms of Use -->
+    <url>
+        <loc>https://grabgifts.ru/terms.html</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/terms.html" />
     </url>
 
     <!-- Privacy Policy page -->
