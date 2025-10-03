@@ -24,7 +24,7 @@ Disallow: /private/
 Allow: /index.html
 Allow: /privacy-policy.html
 Allow: /terms.html
-Allow: /blog-*.html
+Allow: /blog/
 
 # Crawl delay for respectful crawling
 Crawl-delay: 1

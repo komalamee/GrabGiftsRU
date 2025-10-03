@@ -84,29 +84,29 @@
 
     <!-- Blog: TON Gifts article -->
     <url>
-        <loc>https://grabgifts.ru/blog-ton-gifts.html</loc>
-        <lastmod>2025-09-29</lastmod>
+        <loc>https://grabgifts.ru/blog/ton-gifts/</loc>
+        <lastmod>2025-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-ton-gifts.html" />
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/ton-gifts/" />
     </url>
 
     <!-- Blog: Telegram Games article -->
     <url>
-        <loc>https://grabgifts.ru/blog-telegram-games.html</loc>
-        <lastmod>2025-09-29</lastmod>
+        <loc>https://grabgifts.ru/blog/telegram-games/</loc>
+        <lastmod>2025-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-telegram-games.html" />
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/telegram-games/" />
     </url>
 
     <!-- Blog: Blockchain Rewards article -->
     <url>
-        <loc>https://grabgifts.ru/blog-blockchain-rewards.html</loc>
-        <lastmod>2025-09-29</lastmod>
+        <loc>https://grabgifts.ru/blog/blockchain-rewards/</loc>
+        <lastmod>2025-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog-blockchain-rewards.html" />
+        <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/blockchain-rewards/" />
     </url>
 
     <!-- Homepage sections as deep links -->
