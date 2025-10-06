@@ -6,7 +6,7 @@
     <!-- Main homepage -->
     <url>
         <loc>https://grabgifts.ru/</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2024-10-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/" />
@@ -33,7 +33,7 @@
         </image:image>
 
         <image:image>
-            <image:loc>https://grabgifts.ru/Public/Images/Plush%20Pepe.png</image:loc>
+            <image:loc>https://grabgifts.ru/Public/Images/plush-pepe.png</image:loc>
             <image:title>Plush Pepe - Legendary Gift</image:title>
             <image:caption>Легендарный подарок Плюшевый Пепе стоимостью 4800 TON</image:caption>
         </image:image>
@@ -62,12 +62,19 @@
             <image:title>GrabGifts Screenshot 3</image:title>
             <image:caption>Скриншот игры GrabGifts - игровой процесс</image:caption>
         </image:image>
+
+        <!-- OG Image -->
+        <image:image>
+            <image:loc>https://grabgifts.ru/Public/Images/og-image.png</image:loc>
+            <image:title>GrabGifts Open Graph Image</image:title>
+            <image:caption>Социальное изображение для GrabGifts</image:caption>
+        </image:image>
     </url>
 
     <!-- Terms of Use -->
     <url>
         <loc>https://grabgifts.ru/terms.html</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2024-09-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/terms.html" />
@@ -76,7 +83,7 @@
     <!-- Privacy Policy page -->
     <url>
         <loc>https://grabgifts.ru/privacy-policy.html</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2024-09-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/privacy-policy.html" />
@@ -85,7 +92,7 @@
     <!-- Blog: TON Gifts article -->
     <url>
         <loc>https://grabgifts.ru/blog/ton-gifts/</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/ton-gifts/" />
@@ -94,7 +101,7 @@
     <!-- Blog: Telegram Games article -->
     <url>
         <loc>https://grabgifts.ru/blog/telegram-games/</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/telegram-games/" />
@@ -103,46 +110,10 @@
     <!-- Blog: Blockchain Rewards article -->
     <url>
         <loc>https://grabgifts.ru/blog/blockchain-rewards/</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <xhtml:link rel="alternate" hreflang="ru" href="https://grabgifts.ru/blog/blockchain-rewards/" />
-    </url>
-
-    <!-- Homepage sections as deep links -->
-    <url>
-        <loc>https://grabgifts.ru/#about</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <url>
-        <loc>https://grabgifts.ru/#features</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <url>
-        <loc>https://grabgifts.ru/#prizes</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://grabgifts.ru/#gallery</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <url>
-        <loc>https://grabgifts.ru/#faq</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
     </url>
 
 </urlset>
